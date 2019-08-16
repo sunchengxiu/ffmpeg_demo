@@ -21,15 +21,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    [self muxerMp4AndAAC];
-    const char *in_filename_v = "/Users/sunchengxiu/ios_ffmpeg_demo/ios_ffmpeg_demo/ios_ffmpeg_demo/media/v.264";
-           const char *in_filename_a = "/Users/sunchengxiu/ios_ffmpeg_demo/ios_ffmpeg_demo/ios_ffmpeg_demo/media/a.aac";
-       NSString *outFileName = [NSHomeDirectory() stringByAppendingPathComponent:@"out.MP4"];
-       if ([[NSFileManager defaultManager] fileExistsAtPath:outFileName]) {
-           [[NSFileManager defaultManager] removeItemAtPath:outFileName error:nil];
-       }
-       NSLog(@"%@",outFileName);
-           const char *out_filename = [outFileName UTF8String];//Output file URL 
-    muxer264AndAAC(in_filename_v, in_filename_a, out_filename);
+//    const char *in_filename_v = "/Users/sunchengxiu/ios_ffmpeg_demo/ios_ffmpeg_demo/ios_ffmpeg_demo/media/v.264";
+//           const char *in_filename_a = "/Users/sunchengxiu/ios_ffmpeg_demo/ios_ffmpeg_demo/ios_ffmpeg_demo/media/a.aac";
+//       NSString *outFileName = [NSHomeDirectory() stringByAppendingPathComponent:@"out.MP4"];
+//       if ([[NSFileManager defaultManager] fileExistsAtPath:outFileName]) {
+//           [[NSFileManager defaultManager] removeItemAtPath:outFileName error:nil];
+//       }
+//       NSLog(@"%@",outFileName);
+//           const char *out_filename = [outFileName UTF8String];//Output file URL
+//    muxer264AndAAC(in_filename_v, in_filename_a, out_filename);
 }
 int muxer264AndAAC(char *inputH264FileName,char *inputAacFileName,char *outMP4FileName)
 {

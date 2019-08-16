@@ -158,9 +158,21 @@ int muxer_main(char *inputH264FileName,char *inputAacFileName,char *outMP4FileNa
     
     //FIX
 #if USE_H264BSF
+    /**
+h264有两种封装，
+
+一种是annexb模式，传统模式，有startcode，SPS和PPS是在ES中
+
+一种是mp4模式，一般mp4 mkv会有，没有startcode，SPS和PPS以及其它信息被封装在container中，每一个frame前面是这个frame的长度
+
+
+
+很多解码器只支持annexb这种模式，因此需要将mp4做转换：
+    */
     AVBitStreamFilterContext* h264bsfc =  av_bitstream_filter_init("h264_mp4toannexb");
 #endif
 #if USE_AACBSF
+    //将AAC编码器编码后的原始码流（ADTS头 + ES流）封装为MP4或者FLV或者MOV等格式时，需要先将ADTS头转换为MPEG-4 AudioSpecficConfig （将音频相关编解码参数提取出来），并将原始码流中的ADTS头去掉（只剩下ES流）。
     AVBitStreamFilterContext* aacbsfc =  av_bitstream_filter_init("aac_adtstoasc");
 #endif
     
