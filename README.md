@@ -1,2 +1,2 @@
-# ffmpeg_demo
-ffmpeg 各种测试 demo
+# ios_ffmpeg_demo
+ios ffmpeg demo
