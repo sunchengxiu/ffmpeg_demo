@@ -61,3 +61,6 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+
+ios_ffmpeg_demo/ios_ffmpeg_demo/media/*
+ios_ffmpeg_demo/ios_ffmpeg_demo/FFmpeg-iOS/*
