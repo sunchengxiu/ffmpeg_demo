@@ -296,7 +296,9 @@ int muxer_main(char *inputH264FileName,char *inputAacFileName,char *outMP4FileNa
         av_bitstream_filter_filter(aacbsfc, out_stream->codec, NULL, &pkt.data, &pkt.size, pkt.data, pkt.size, 0);
 #endif
         
-        
+        // 重新生成PTS需要用到流的帧率。 对于视频来说  in_stream->r_frame_rate 就是帧率  而对音频来说则不是，它是音频采样比特率的10倍，原因不明。
+
+        // 比如音频采样率是44.1KHz， 则MP3格式对应的帧率是 44100 * 2(channel) * 16(bit) * 10 = 14112000.
         //Convert PTS/DTS
         pkt.pts = av_rescale_q_rnd(pkt.pts, in_stream->time_base, out_stream->time_base, (AV_ROUND_NEAR_INF|AV_ROUND_PASS_MINMAX));
         pkt.dts = av_rescale_q_rnd(pkt.dts, in_stream->time_base, out_stream->time_base, (AV_ROUND_NEAR_INF|AV_ROUND_PASS_MINMAX));
